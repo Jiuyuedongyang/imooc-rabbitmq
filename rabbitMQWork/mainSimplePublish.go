@@ -3,13 +3,17 @@ package main
 import (
 	"fmt"
 	"imooc-rabbitmq/RabbitMQ"
+	"strconv"
+	"time"
 )
 
 func main() {
 	rabbitmq:=RabbitMQ.NewRabbitMQSimple("imoocSimple")
-	rabbitmq.PublishSimple("hello imooc!1")
-	rabbitmq.PublishSimple("hello imooc!2")
-	rabbitmq.PublishSimple("hello imooc!3")
+	for i := 0; i <=50; i++ {
+		rabbitmq.PublishSimple("hello imooc! "+strconv.Itoa(i))
+	time.Sleep(1*time.Second)
+		fmt.Println(i)
+	}
 	fmt.Println("发送成功")
 
 }
